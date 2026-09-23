@@ -1,0 +1,46 @@
+Trên đây là {n} ảnh liên tiếp, mỗi ảnh cách nhau 1 giây, từ một camera giao thông CỐ ĐỊNH ở Việt Nam. Mỗi ảnh có nhãn [giây t].
+Nhiệm vụ: mô tả CHUỖI HÀNH ĐỘNG cụ thể và phát hiện BẤT THƯỜNG GIAO THÔNG, để người dùng tìm được đoạn video bằng câu như
+"xe máy chở 3 người không đội mũ bảo hiểm vượt đèn đỏ" hoặc "ô tô trắng quay đầu giữa ngã tư".
+
+CÁCH QUAN SÁT
+1. Xác định bố cục trước: loại nút giao, các nhánh đường, dải phân cách, vạch dừng, vạch người đi bộ, vị trí đèn giao thông.
+2. Xác định CHIỀU LƯU THÔNG BÌNH THƯỜNG của từng phần đường dựa vào hướng đi của số đông xe trên chính phần đường đó.
+   Đường hai chiều có dải phân cách thì hai bên chạy ngược nhau là BÌNH THƯỜNG.
+3. Theo dõi từng đối tượng qua các ảnh liên tiếp. Nhận dạng đối tượng thật cụ thể:
+   - Xe: loại (xe máy, xe tay ga, ô tô con, SUV, bán tải, taxi, xe buýt, xe tải, xe ba gác, xe đạp...), màu, đặc điểm (chở hàng gì, bao nhiêu người, thùng hàng, đèn ưu tiên).
+   - Người: màu áo, áo mưa, màu mũ bảo hiểm hoặc KHÔNG đội mũ, đồng phục (CSGT, công an...).
+   - Vị trí: bên trái/giữa/phải khung hình, gần/xa camera, làn nào.
+4. Mô tả hành động bằng động từ cụ thể: xuất hiện, chạy thẳng, rẽ trái, rẽ phải, quay đầu, dừng chờ đèn, vượt qua vạch dừng, chuyển làn, len lỏi, lên vỉa hè, đỗ lại, băng qua đường, va chạm, ngã...
+5. Đèn giao thông: nói đèn ở đâu, của hướng nào, màu ở từng giây. Đèn quá nhỏ không đọc được màu thì ghi "không xác định".
+
+BẤT THƯỜNG CẦN BẮT (chỉ ghi khi có BẰNG CHỨNG nhìn thấy, nêu rõ bằng chứng)
+- Tai nạn, va chạm, xe ngã, người nằm trên đường, xe hỏng dừng giữa đường
+- Vượt đèn đỏ (phải thấy đèn của hướng đó đang đỏ VÀ xe đi qua vạch dừng)
+- Đi ngược chiều (phải ngược với số đông trên CÙNG phần đường)
+- Quay đầu, rẽ sai làn, lấn làn, cắt ngang đầu xe khác, đi vào làn/đường cấm
+- Chạy hoặc dừng trên vỉa hè, trên vạch người đi bộ; dừng đỗ sai chỗ
+- Không đội mũ bảo hiểm, chở từ 3 người trở lên, chở hàng cồng kềnh
+- Người đi bộ băng qua đường sai chỗ hoặc nguy hiểm
+- Xe ưu tiên (cứu thương, cứu hỏa, công an), CSGT đang xử lý, ùn tắc, đám đông tụ tập, ngập nước, vật cản trên đường
+Nếu nghi ngờ nhưng chưa chắc, vẫn ghi và thêm "(chưa chắc chắn)".
+
+QUY TẮC
+- Chỉ mô tả những gì nhìn thấy. Không đọc hay chép chữ, số, biển số, biển hiệu.
+- Mỗi ý viết trên MỘT DÒNG riêng, bắt đầu bằng "- ". Mốc thời gian dùng đúng nhãn giây của ảnh.
+- Ưu tiên đối tượng nổi bật và đối tượng có hành vi bất thường. Tối đa 12 dòng ở CHUỖI HÀNH ĐỘNG. Không lặp ý.
+
+TRẢ LỜI ĐÚNG MẪU SAU (giữ nguyên các tiêu đề, không thêm gì khác):
+BỐI CẢNH:
+- <loại nút giao, các nhánh, dải phân cách, vạch kẻ>
+- <ngày/đêm, thời tiết, mặt đường>
+- <chiều lưu thông bình thường của từng phần đường>
+- <mật độ: thưa | vừa | đông | ùn tắc>
+ĐÈN GIAO THÔNG:
+- [giây a–b] <vị trí đèn, hướng> : <màu>
+CHUỖI HÀNH ĐỘNG:
+- [giây a–b] <đối tượng cụ thể> <hành động> <vị trí/hướng>
+BẤT THƯỜNG:
+- [giây a–b] <LOẠI BẤT THƯỜNG> : <đối tượng> <hành vi> | bằng chứng: <điều nhìn thấy>
+(nếu không có, ghi đúng một dòng "- Không có")
+TÓM TẮT:
+<2-3 câu tóm tắt toàn đoạn, nêu rõ bất thường nếu có>

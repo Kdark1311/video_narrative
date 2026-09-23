@@ -1,0 +1,32 @@
+{
+ "run": "20260923-163733_Qwen3-VL-32B-Instruct-FP8_v2",
+ "model": "Qwen/Qwen3-VL-32B-Instruct-FP8",
+ "args": {
+  "videos": [
+   "/content/traffic/data/N098/N098-V001"
+  ],
+  "model": "Qwen/Qwen3-VL-32B-Instruct-FP8",
+  "prompt": "/content/video_narrative/prompts/traffic_caption_v2_vi.txt",
+  "runs_dir": "/content/video_narrative/outputs/runs",
+  "run_name": null,
+  "win": 10,
+  "overlap": 1,
+  "max_seconds": 20,
+  "fps": 1.0,
+  "w": 1280,
+  "h": 720,
+  "crop_top": 30,
+  "max_tokens": 1536,
+  "gpu_util": 0.92
+ },
+ "prompt": "Trên đây là {n} ảnh liên tiếp, mỗi ảnh cách nhau 1 giây, từ một camera giao thông CỐ ĐỊNH ở Việt Nam. Mỗi ảnh có nhãn [giây t].\nNhiệm vụ: mô tả CHUỖI HÀNH ĐỘNG cụ thể và phát hiện BẤT THƯỜNG GIAO THÔNG, để người dùng tìm được đoạn video bằng câu như\n\"xe máy chở 3 người không đội mũ bảo hiểm vượt đèn đỏ\" hoặc \"ô tô trắng quay đầu giữa ngã tư\".\n\nCÁCH QUAN SÁT\n1. Xác định bố cục trước: loại nút giao, các nhánh đường, dải phân cách, vạch dừng, vạch người đi bộ, vị trí đèn giao thông.\n2. Xác định CHIỀU LƯU THÔNG BÌNH THƯỜNG của từng phần đường dựa vào hướng đi của số đông xe trên chính phần đường đó.\n   Đường hai chiều có dải phân cách thì hai bên chạy ngược nhau là BÌNH THƯỜNG.\n3. Theo dõi từng đối tượng qua các ảnh liên tiếp. Nhận dạng đối tượng thật cụ thể:\n   - Xe: loại (xe máy, xe tay ga, ô tô con, SUV, bán tải, taxi, xe buýt, xe tải, xe ba gác, xe đạp...), màu, đặc điểm (chở hàng gì, bao nhiêu người, thùng hàng, đèn ưu tiên).\n   - Người: màu áo, áo mưa, màu mũ bảo hiểm hoặc KHÔNG đội mũ, đồng phục (CSGT, công an...).\n   - Vị trí: bên trái/giữa/phải khung hình, gần/xa camera, làn nào.\n4. Mô tả hành động bằng động từ cụ thể: xuất hiện, chạy thẳng, rẽ trái, rẽ phải, quay đầu, dừng chờ đèn, vượt qua vạch dừng, chuyển làn, len lỏi, lên vỉa hè, đỗ lại, băng qua đường, va chạm, ngã...\n5. Đèn giao thông: nói đèn ở đâu, của hướng nào, màu ở từng giây. Đèn quá nhỏ không đọc được màu thì ghi \"không xác định\".\n\nBẤT THƯỜNG CẦN BẮT (chỉ ghi khi có BẰNG CHỨNG nhìn thấy, nêu rõ bằng chứng)\n- Tai nạn, va chạm, xe ngã, người nằm trên đường, xe hỏng dừng giữa đường\n- Vượt đèn đỏ (phải thấy đèn của hướng đó đang đỏ VÀ xe đi qua vạch dừng)\n- Đi ngược chiều (phải ngược với số đông trên CÙNG phần đường)\n- Quay đầu, rẽ sai làn, lấn làn, cắt ngang đầu xe khác, đi vào làn/đường cấm\n- Chạy hoặc dừng trên vỉa hè, trên vạch người đi bộ; dừng đỗ sai chỗ\n- Không đội mũ bảo hiểm, chở từ 3 người trở lên, chở hàng cồng kềnh\n- Người đi bộ băng qua đường sai chỗ hoặc nguy hiểm\n- Xe ưu tiên (cứu thương, cứu hỏa, công an), CSGT đang xử lý, ùn tắc, đám đông tụ tập, ngập nước, vật cản trên đường\nNếu nghi ngờ nhưng chưa chắc, vẫn ghi và thêm \"(chưa chắc chắn)\".\n\nQUY TẮC\n- Chỉ mô tả những gì nhìn thấy. Không đọc hay chép chữ, số, biển số, biển hiệu.\n- Mỗi ý viết trên MỘT DÒNG riêng, bắt đầu bằng \"- \". Mốc thời gian dùng đúng nhãn giây của ảnh.\n- Ưu tiên đối tượng nổi bật và đối tượng có hành vi bất thường. Tối đa 12 dòng ở CHUỖI HÀNH ĐỘNG. Không lặp ý.\n\nTRẢ LỜI ĐÚNG MẪU SAU (giữ nguyên các tiêu đề, không thêm gì khác):\nBỐI CẢNH:\n- <loại nút giao, các nhánh, dải phân cách, vạch kẻ>\n- <ngày/đêm, thời tiết, mặt đường>\n- <chiều lưu thông bình thường của từng phần đường>\n- <mật độ: thưa | vừa | đông | ùn tắc>\nĐÈN GIAO THÔNG:\n- [giây a–b] <vị trí đèn, hướng> : <màu>\nCHUỖI HÀNH ĐỘNG:\n- [giây a–b] <đối tượng cụ thể> <hành động> <vị trí/hướng>\nBẤT THƯỜNG:\n- [giây a–b] <LOẠI BẤT THƯỜNG> : <đối tượng> <hành vi> | bằng chứng: <điều nhìn thấy>\n(nếu không có, ghi đúng một dòng \"- Không có\")\nTÓM TẮT:\n<2-3 câu tóm tắt toàn đoạn, nêu rõ bất thường nếu có>\n",
+ "mode": "images (1 ảnh/giây, có nhãn giây)",
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+ "model_load_s": 86.7,
+ "videos": {
+  "N098-V001": {
+   "segments": 2,
+   "gen_s": 22.9
+  }
+ }
+}
