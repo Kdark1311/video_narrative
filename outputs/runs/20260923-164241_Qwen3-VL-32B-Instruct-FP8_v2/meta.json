@@ -1,0 +1,32 @@
+{
+ "run": "20260923-164241_Qwen3-VL-32B-Instruct-FP8_v2",
+ "model": "Qwen/Qwen3-VL-32B-Instruct-FP8",
+ "args": {
+  "videos": [
+   "/content/traffic/data/N098/N098-V001"
+  ],
+  "model": "Qwen/Qwen3-VL-32B-Instruct-FP8",
+  "prompt": "/content/video_narrative/prompts/traffic_caption_v3_vi.txt",
+  "runs_dir": "/content/video_narrative/outputs/runs",
+  "run_name": null,
+  "win": 10,
+  "overlap": 1,
+  "max_seconds": 20,
+  "fps": 1.0,
+  "w": 1280,
+  "h": 720,
+  "crop_top": 30,
+  "max_tokens": 1536,
+  "gpu_util": 0.92
+ },
+ "prompt": "Trên đây là {n} ảnh liên tiếp theo thứ tự thời gian (mỗi ảnh cách nhau 1 giây) từ một camera giao thông CỐ ĐỊNH ở Việt Nam.\nHãy viết một đoạn MÔ TẢ diễn biến của đoạn video này đủ cụ thể (loại xe, màu, người, hành động, vị trí) để người dùng tìm lại được nó bằng một câu mô tả.\n\nCÁCH QUAN SÁT\n- Trước hết xác định bố cục: loại nút giao, các nhánh đường, dải phân cách, vạch dừng, vạch người đi bộ, vị trí các cột đèn.\n- Xác định chiều lưu thông bình thường của từng phần đường theo hướng đi của số đông xe trên chính phần đường đó. Đường hai chiều có dải phân cách thì hai bên chạy ngược nhau là bình thường.\n- Chú ý cả người đứng trên đường hoặc ở góc giao lộ, đặc biệt CSGT/công an mặc đồng phục.\n- Theo dõi TỪNG đối tượng qua các ảnh liên tiếp. Chỉ nói một đối tượng làm gì khi thấy nó làm vậy qua nhiều ảnh; đối tượng đã ra khỏi khung hình thì không mô tả tiếp.\n- Nhận dạng thật cụ thể: loại xe (xe máy, xe tay ga, ô tô con, SUV, bán tải, taxi, xe buýt, xe tải, ba gác, xe đạp...), màu xe, số người trên xe, màu áo, mũ bảo hiểm (màu gì hoặc không đội), áo mưa, hàng hóa chở theo, đồng phục (CSGT, công an...).\n- Hành động bằng động từ cụ thể: chạy thẳng, rẽ trái, rẽ phải, quay đầu, dừng chờ đèn, chuyển làn, len lỏi, lên vỉa hè, đỗ lại, băng qua đường, va chạm, ngã...\n- Đèn giao thông: mỗi cột đèn điều khiển một hướng khác nhau. Chỉ nói màu đèn của hướng mà xe đang đi. Không nhìn rõ màu thì không kết luận.\n\nBẤT THƯỜNG (chỉ kết luận khi thấy bằng chứng rõ)\n- Tai nạn, va chạm, xe ngã, người nằm trên đường, xe hỏng dừng giữa đường.\n- Vượt đèn đỏ: CHỈ khi xe đi qua vạch dừng lúc đèn của hướng đó ĐÃ đỏ. Xe đã vào giao lộ khi đèn xanh hoặc vàng rồi đi tiếp là bình thường.\n- Đi ngược chiều so với số đông trên CÙNG phần đường; quay đầu sai chỗ; lấn làn; đi vào làn hoặc đường cấm.\n- Chạy hoặc dừng trên vỉa hè, dừng đỗ sai chỗ, dừng trên vạch người đi bộ.\n- Không đội mũ bảo hiểm, chở từ 3 người trở lên, chở hàng cồng kềnh.\n- Người đi bộ băng qua đường nguy hiểm; xe ưu tiên; CSGT đang xử lý; ùn tắc; đám đông tụ tập; ngập nước; vật cản trên đường.\n- Nếu nghi ngờ nhưng chưa chắc, ghi thêm \"(chưa chắc chắn)\".\n- Mỗi bất thường phải chỉ ra được đối tượng cụ thể (loại xe, màu, vị trí) đã làm việc đó. Không chỉ ra được thì KHÔNG ghi.\n\nQUY TẮC VIẾT\n- Chỉ mô tả những gì nhìn thấy. Không đọc hay chép chữ, số, biển số, biển hiệu.\n- KHÔNG ghi số giây, số thứ tự ảnh hay mốc thời gian. Dùng từ nối như \"đầu đoạn\", \"sau đó\", \"cuối đoạn\".\n- Mỗi câu viết trên MỘT DÒNG riêng. Kể theo thứ tự: bối cảnh, rồi diễn biến, rồi các hành vi bất thường nếu có.\n- Từ 6 đến 12 câu, không lặp ý, ưu tiên đối tượng nổi bật và đối tượng có hành vi bất thường.\n\nTRẢ LỜI ĐÚNG MẪU SAU, không thêm gì khác:\nMÔ TẢ:\n<câu 1>\n<câu 2>\n...\nBẤT THƯỜNG: <liệt kê ngắn các bất thường, ngăn cách bằng dấu chấm phẩy; nếu không có ghi \"Không có\">\n",
+ "mode": "images (1 ảnh/giây, có nhãn giây)",
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+ "model_load_s": 35.8,
+ "videos": {
+  "N098-V001": {
+   "segments": 2,
+   "gen_s": 14.2
+  }
+ }
+}

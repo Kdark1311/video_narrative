@@ -12,7 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ap = argparse.ArgumentParser()
 ap.add_argument('videos', nargs='+', help='thư mục video, vd /content/traffic/data/N098/N098-V001')
 ap.add_argument('--model', default='Qwen/Qwen3-VL-32B-Instruct-FP8')
-ap.add_argument('--prompt', default=f'{ROOT}/prompts/traffic_caption_v2_vi.txt')
+ap.add_argument('--prompt', default=f'{ROOT}/prompts/traffic_caption_v3_vi.txt')
 ap.add_argument('--runs_dir', default=f'{ROOT}/outputs/runs')
 ap.add_argument('--run_name', default=None)
 ap.add_argument('--win', type=int, default=10, help='số giây (ảnh) mỗi đoạn')
@@ -48,24 +48,20 @@ def load(f):
 
 def build_prompt(secs):
     content = []
-    for t in secs:
-        content += [{'type': 'text', 'text': f'[giây {t:g}]'}, {'type': 'image'}]
+    for k, _ in enumerate(secs, 1):
+        content += [{'type': 'text', 'text': f'[ảnh {k}]'}, {'type': 'image'}]
     content.append({'type': 'text', 'text': prompt_tpl.replace('{n}', str(len(secs)))})
     return tok.apply_chat_template([{'role': 'user', 'content': content}], add_generation_prompt=True, tokenize=False)
 
 
-SECTIONS = ['BỐI CẢNH', 'ĐÈN GIAO THÔNG', 'CHUỖI HÀNH ĐỘNG', 'BẤT THƯỜNG', 'TÓM TẮT']
-
-
 def parse(txt):
-    out, cur = {}, None
-    for line in txt.strip().splitlines():
-        head = line.strip().rstrip(':').upper()
-        if head in SECTIONS:
-            cur = head; out[cur] = []
-        elif cur and line.strip():
-            out[cur].append(line.strip().lstrip('- ').strip())
-    return {k: out.get(k, []) for k in SECTIONS}
+    # 'MÔ TẢ:' theo sau là các câu (mỗi câu một dòng); 'BẤT THƯỜNG: ...' nằm trên một dòng
+    m = re.search(r'MÔ TẢ:\s*(.*?)(?:\n\s*BẤT THƯỜNG:|$)', txt, re.S)
+    b = re.search(r'BẤT THƯỜNG:\s*(.*)', txt, re.S)
+    lines = [l.strip().lstrip('- ').strip() for l in (m.group(1) if m else txt).splitlines() if l.strip()]
+    anomaly = b.group(1).strip() if b else ''
+    return {'caption': ' '.join(lines), 'caption_lines': lines, 'bat_thuong': anomaly,
+            'co_bat_thuong': bool(anomaly) and not anomaly.lower().startswith('không có')}
 
 
 meta = {'run': run_name, 'model': a.model, 'args': vars(a), 'prompt': prompt_tpl, 'mode': 'images (1 ảnh/giây, có nhãn giây)',
