@@ -4,3 +4,4 @@ data/
 *.webp
 *.jpg
 __pycache__/
+*.pt

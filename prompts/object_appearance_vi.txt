@@ -1,0 +1,12 @@
+Các ảnh trên được cho là cùng MỘT đối tượng giao thông (bộ phát hiện đoán: {loai}), cắt từ camera giao thông ở các giây liên tiếp.
+{note}
+Trả lời đúng 2 dòng:
+HỢP LỆ: <"có" nếu các ảnh đều là cùng một phương tiện hoặc cùng một người; "không" nếu các ảnh là những xe/người KHÁC nhau (khác màu, khác số người), hoặc không phải phương tiện/người (chòi, cột, biển báo, cọc tiêu)>
+MÔ TẢ: <cụm từ ngắn tối đa 20 từ>
+
+MÔ TẢ chỉ tả NGOẠI HÌNH (không tả hành động, vị trí hay xung quanh), chỉ nêu điều nhìn thấy rõ, KHÔNG liệt kê những thứ không có. Thứ tự:
+loại cụ thể (người đi bộ, xe tay ga, xe số, xe máy điện, xe đạp, ô tô con, SUV, bán tải, taxi, xe buýt, xe tải, xe ba gác...), màu xe;
+xe 2 bánh: số người, màu áo, màu mũ bảo hiểm (chỉ khi thấy rõ), áo mưa, hàng hoá chở theo;
+người đi bộ: màu áo; nếu mặc đồng phục thì ghi rõ. Đồng phục CSGT Việt Nam: áo và quần màu vàng nhạt/kaki (màu be), thường có mũ kê-pi hoặc mũ bảo hiểm trắng, đứng ở góc giao lộ/gần cột đèn -> ghi "CSGT (đồng phục vàng nhạt)". Đồng phục công an: màu xanh lá đậm.
+Người đang ngồi hoặc lái xe máy/xe đạp thì KHÔNG phải người đi bộ: ghi loại xe (vd "xe máy, 1 người...").
+Không đọc chữ hay biển số.

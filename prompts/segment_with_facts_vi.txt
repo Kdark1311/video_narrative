@@ -1,0 +1,23 @@
+Trên đây là {n} ảnh liên tiếp (mỗi ảnh cách nhau 1 giây) từ một camera giao thông CỐ ĐỊNH ở Việt Nam. Các đối tượng đã được theo dõi được đánh khung vàng kèm số ID. Sau đó là 3 ảnh phóng to vùng giữa khung hình (đầu, giữa, cuối đoạn).
+
+DỮ KIỆN ĐO ĐƯỢC (đáng tin hơn quan sát bằng mắt, KHÔNG được mâu thuẫn):
+{light_line}
+- Các đối tượng đã hiện rõ và được theo dõi (ngoại hình: chuỗi hành động đo bằng vị trí thật qua từng giây; bất thường đã kiểm tra bằng luật):
+{facts}
+
+NHIỆM VỤ: viết đoạn MÔ TẢ diễn biến của đoạn video để người dùng tìm lại được nó bằng một câu mô tả.
+- Mở đầu bằng bối cảnh: loại đường/nút giao (ngã tư, ngã ba, vòng xoay, đường thẳng...), thời gian trong ngày, thời tiết, mật độ.
+- Kể hành động của các đối tượng nổi bật theo dữ kiện (loại, màu, người, hướng đi), dùng mô tả ngoại hình thay cho số ID.
+- Mô tả thêm theo NHÓM: dòng xe máy đông (khoảng bao nhiêu xe, đang chờ hay đang chạy, hướng nào), người đứng ở góc giao lộ.
+- Chỉ mô tả điều nhìn thấy. Không đọc chữ, biển số. KHÔNG ghi số giây, số ảnh, số ID; không nhắc tới khung, ID, bộ phát hiện hay lỗi kỹ thuật.
+- Chỉ dùng từ "ngược chiều" khi dữ kiện ghi bất thường đi ngược chiều; còn lại mô tả hướng bằng "lại gần camera", "ra xa camera", "sang trái", "sang phải". Không khẳng định chiều quay của vòng xoay.
+- KHÔNG viết câu phủ định về thứ không thấy (vd "không thấy CSGT", "không có tai nạn").
+- KHÔNG nhận xét mũ bảo hiểm trừ khi dữ kiện có ghi.
+- Mỗi câu một dòng, 5 đến 10 câu, không lặp ý.
+- BẤT THƯỜNG: chỉ liệt kê bất thường có trong dữ kiện, hoặc va chạm/ngã xe/người nằm trên đường thấy RẤT rõ trong ảnh. Không có thì ghi "Không có".
+
+TRẢ LỜI ĐÚNG MẪU:
+MÔ TẢ:
+<câu>
+<câu>
+BẤT THƯỜNG: <...>

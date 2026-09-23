@@ -1,0 +1,118 @@
+{
+ "camera": "N098",
+ "note": "Khai báo tay 1 lần/camera. Toạ độ trên ảnh gốc 1920x1080.",
+ "lights": {
+  "pole_near": {
+   "roi": [
+    995,
+    245,
+    1025,
+    340
+   ],
+   "controls": "xe đi từ phía camera vào giao lộ (hướng lên trên-phải)"
+  },
+  "overhead_near": {
+   "roi": [
+    835,
+    155,
+    925,
+    188
+   ],
+   "controls": "các xe đi từ phía camera (làn có mũi tên, phía dưới-trái khung hình) vào giao lộ"
+  }
+ },
+ "primary_light": "overhead_near",
+ "zones": {
+  "approach_near": {
+   "poly": [
+    [
+     0,
+     705
+    ],
+    [
+     502,
+     442
+    ],
+    [
+     1020,
+     472
+    ],
+    [
+     645,
+     1080
+    ],
+    [
+     0,
+     1080
+    ]
+   ],
+   "desc": "làn tới giao lộ phía camera (xe chạy lên phía trên-phải), đèn overhead_near điều khiển",
+   "name": "làn tới giao lộ phía camera"
+  },
+  "intersection": {
+   "poly": [
+    [
+     0,
+     190
+    ],
+    [
+     1920,
+     190
+    ],
+    [
+     1920,
+     420
+    ],
+    [
+     1030,
+     470
+    ],
+    [
+     502,
+     442
+    ],
+    [
+     0,
+     600
+    ]
+   ],
+   "desc": "lòng giao lộ và đường ngang phía xa",
+   "name": "lòng giao lộ / đường ngang phía trước"
+  },
+  "island": {
+   "poly": [
+    [
+     1030,
+     470
+    ],
+    [
+     1600,
+     470
+    ],
+    [
+     1780,
+     560
+    ],
+    [
+     1500,
+     1080
+    ],
+    [
+     660,
+     1080
+    ]
+   ],
+   "desc": "đảo cỏ giữa, xe không được đi vào",
+   "name": "đảo cỏ giữa"
+  }
+ },
+ "stop_line": {
+  "desc": "xe trong approach_near đi sang intersection = qua vạch dừng"
+ },
+ "focus_roi": [
+  700,
+  120,
+  1500,
+  480
+ ]
+}
