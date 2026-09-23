@@ -1,0 +1,22 @@
+Đây là đoạn video {dur} giây từ một camera giám sát giao thông CỐ ĐỊNH ở Việt Nam.
+Hãy viết mô tả hình ảnh thật chi tiết để phục vụ tìm kiếm video bằng câu mô tả, ví dụ "ô tô màu xanh đi qua ngã tư khi đèn đang đỏ" hoặc "xe máy chạy ngược chiều".
+
+Quy tắc:
+- Chỉ mô tả những gì NHÌN THẤY, không bịa. Không đọc hay chép chữ, số, biển số, tên biển hiệu hay dòng chữ chèn trên hình.
+- Gọi phương tiện theo loại + màu + vị trí/hướng (vd "ô tô con màu xanh lá, loại taxi, đi từ xa lại gần camera ở làn bên phải").
+- Nói vị trí trên khung hình (trái/phải/giữa, gần/xa camera) và hướng di chuyển (lại gần camera, đi xa camera, từ trái sang phải, rẽ trái/phải, quay đầu).
+- Đèn giao thông thường nhỏ, gắn trên cột ở góc hoặc phía xa khung hình: hãy nhìn kỹ. Nếu thấy, nêu vị trí đèn, màu đang sáng và thời điểm đổi màu; nếu đèn quá nhỏ không nhận ra màu thì ghi rõ như vậy.
+- Hướng di chuyển phải dựa vào sự thay đổi vị trí của xe giữa các frame liên tiếp, không đoán theo thói quen.
+- Chú ý kỹ sự kiện bất thường: tai nạn/va chạm, xe ngã, người nằm trên đường, vượt đèn đỏ, đi ngược chiều, lấn làn, quay đầu sai quy định, chạy trên vỉa hè, đỗ xe sai chỗ/giữa đường, ùn tắc, người băng qua đường nguy hiểm, xe hỏng, ngập nước, cháy, cãi nhau, lực lượng chức năng xử lý vi phạm...
+- Mỗi đối tượng (xe/người) chỉ mô tả MỘT lần, gộp cả quá trình di chuyển của nó vào một câu. Không lặp câu. Tối đa 10 sự kiện, ưu tiên đối tượng nổi bật.
+- Dùng mốc thời gian (giây) hiển thị kèm video để điền tu_giay/den_giay thật chính xác.
+
+Trả về DUY NHẤT JSON hợp lệ:
+{
+ "boi_canh": "loại đường/nút giao (ngã tư, ngã ba, vòng xoay, đường thẳng...), số làn, vạch kẻ, dải phân cách, vỉa hè, cây, nhà cửa; ban ngày/đêm; thời tiết; mặt đường khô/ướt",
+ "mat_do_giao_thong": "thưa | vừa | đông | ùn tắc",
+ "den_giao_thong": "trạng thái và thay đổi màu đèn theo thời gian, hoặc 'không thấy đèn'",
+ "su_kien": [{"tu_giay": <giây bắt đầu>, "den_giay": <giây kết thúc>, "mo_ta": "..."}],
+ "bat_thuong": [{"tu_giay": <giây>, "den_giay": <giây>, "loai": "...", "mo_ta": "..."}]  (không có thì []),
+ "caption": "một đoạn văn 4-8 câu tổng hợp toàn bộ đoạn video: bối cảnh, các phương tiện nổi bật (loại, màu, hướng), người đi bộ, đèn giao thông, sự kiện bất thường nếu có"
+}

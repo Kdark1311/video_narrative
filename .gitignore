@@ -1,0 +1,6 @@
+data/
+*.zip
+*.rar
+*.webp
+*.jpg
+__pycache__/
